@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -61,7 +61,7 @@ export default function ChargerList() {
     null
   );
 
-  const fetchChargers = async () => {
+  const fetchChargers = useCallback(async () => {
     try {
       setIsLoading(true);
       const response = await apiClient.getChargingStations({
@@ -85,11 +85,11 @@ export default function ChargerList() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [currentPage, searchTerm, statusFilter, connectorFilter]);
 
   useEffect(() => {
     fetchChargers();
-  }, [currentPage, searchTerm, statusFilter, connectorFilter]);
+  }, [fetchChargers]);
 
   const handleDelete = async (id: string) => {
     if (!confirm("Are you sure you want to delete this charger?")) return;

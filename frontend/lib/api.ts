@@ -37,9 +37,9 @@ export interface ApiResponse<T> {
 }
 
 class ApiClient {
-  private getAuthHeader() {
-    const token = localStorage.getItem("token");
-    return token ? { Authorization: `Bearer ${token}` } : {};
+  private getAuthHeader(): Record<string, string> {
+  const token = localStorage.getItem("token");
+  return token ? { Authorization: `Bearer ${token}` } : {};
   }
 
   async request<T>(

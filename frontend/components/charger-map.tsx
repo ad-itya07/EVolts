@@ -237,7 +237,7 @@ export default function ChargerMap() {
               {/* Simulated Map Grid */}
               <div className="bg-gradient-to-br from-blue-50 to-green-50 rounded-lg p-6 min-h-96">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 h-full">
-                  {filteredChargers.map((charger, index) => (
+                  {filteredChargers.map((charger) => (
                     <div
                       key={charger._id}
                       className={`relative p-3 rounded-lg border-2 cursor-pointer transition-all hover:scale-105 ${
